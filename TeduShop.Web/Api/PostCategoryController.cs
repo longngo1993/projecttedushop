@@ -21,40 +21,31 @@ namespace TeduShop.Web.Api
         [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
-
             return CreateHttpResponse(request, () =>
             {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var lstcategory = _postCategoryService.GetAll();
-                    response = request.CreateResponse(HttpStatusCode.OK, lstcategory);
-                }
+                var lstcategory = _postCategoryService.GetAll();
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, lstcategory);
                 return response;
             });
         }
-        public HttpResponseMessage Post(HttpRequestMessage request,PostCategory postCategory)
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
         {
-            
-            return CreateHttpResponse(request,()=>
-            {
-                HttpResponseMessage response = null;
-                if(ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                  var category =  _postCategoryService.Add(postCategory);
-                    _postCategoryService.Save();
-                    response = request.CreateResponse(HttpStatusCode.Created, category);
-                }
-                return response;
-            });
+
+            return CreateHttpResponse(request, () =>
+             {
+                 HttpResponseMessage response = null;
+                 if (ModelState.IsValid)
+                 {
+                     request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                 }
+                 else
+                 {
+                     var category = _postCategoryService.Add(postCategory);
+                     _postCategoryService.Save();
+                     response = request.CreateResponse(HttpStatusCode.Created, category);
+                 }
+                 return response;
+             });
         }
         public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
         {
@@ -68,7 +59,7 @@ namespace TeduShop.Web.Api
                 }
                 else
                 {
-                   _postCategoryService.Update(postCategory);
+                    _postCategoryService.Update(postCategory);
                     _postCategoryService.Save();
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
@@ -93,32 +84,6 @@ namespace TeduShop.Web.Api
                 }
                 return response;
             });
-        }
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 }
