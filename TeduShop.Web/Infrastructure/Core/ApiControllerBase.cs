@@ -24,7 +24,7 @@ namespace TeduShop.Web.Infrastructure.Core
             HttpResponseMessage response = null;
             try
             {
-
+                response = function.Invoke();
             }
             catch (DbEntityValidationException ex)
             {
