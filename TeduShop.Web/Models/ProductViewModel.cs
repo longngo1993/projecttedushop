@@ -26,6 +26,7 @@ namespace TeduShop.Web.Models
         public int? Warranty { set; get; }
 
         public string Description { set; get; }
+        public string Tags { set; get; }
 
         public string Content { set; get; }
 
