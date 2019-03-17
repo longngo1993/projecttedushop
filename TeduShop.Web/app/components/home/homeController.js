@@ -1,5 +1,7 @@
 ﻿(function (app) {
     app.controller('homeController', homeController);
-    function homeController() {
+    homeController.$inject = ['authenticationService'];
+    function homeController(authenticationService) {
+        authenticationService.setHeader();
     }
 })(angular.module('tedushop'));
