@@ -13,6 +13,7 @@ using TeduShop.Web.Infrastructure.Extensions;
 namespace TeduShop.Web.Api
 {
     [RoutePrefix("api/postcategory")]
+    [Authorize]
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoryService;
