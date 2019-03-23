@@ -93,9 +93,19 @@
     <Compile Include="Migrations\201903211548110_addForentkey.Designer.cs">
       <DependentUpon>201903211548110_addForentkey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903231046200_addContact.cs" />
+    <Compile Include="Migrations\201903231046200_addContact.Designer.cs">
+      <DependentUpon>201903231046200_addContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903231331559_addFeedback.cs" />
+    <Compile Include="Migrations\201903231331559_addFeedback.Designer.cs">
+      <DependentUpon>201903231331559_addFeedback.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
+    <Compile Include="Repositories\FeedbackRepository.cs" />
     <Compile Include="Repositories\FooterRepository.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
     <Compile Include="Repositories\MenuRepository.cs" />
@@ -150,6 +160,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903211548110_addForentkey.resx">
       <DependentUpon>201903211548110_addForentkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903231046200_addContact.resx">
+      <DependentUpon>201903231046200_addContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903231331559_addFeedback.resx">
+      <DependentUpon>201903231331559_addFeedback.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

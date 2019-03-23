@@ -18,7 +18,12 @@ namespace TeduShop.Web
             defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
             namespaces: new string[] { "TeduShop.Web.Controllers" }
     );
-
+            routes.MapRoute(
+            name: "Contact",
+            url: "lien-he.html",
+            defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "TeduShop.Web.Controllers" }
+     );
             routes.MapRoute(
             name: "Login",
             url: "dang-nhap.html",
