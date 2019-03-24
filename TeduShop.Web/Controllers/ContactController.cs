@@ -31,7 +31,11 @@ namespace TeduShop.Web.Controllers
             viewModel.ContactDetail = GetDetail();
             return View(viewModel);
         }
-
+        [HttpGet]
+        public ActionResult SendFeedback()
+        {
+            return View();
+        }
         [HttpPost]
         [CaptchaValidation("CaptchaCode", "contactCaptcha", "Mã xác nhận không đúng")]
         public ActionResult SendFeedback(FeedbackViewModel feedbackViewModel)
@@ -62,7 +66,6 @@ namespace TeduShop.Web.Controllers
 
             return View("Index", feedbackViewModel);
         }
-
         private ContactDetailViewModel GetDetail()
         {
             var model = _contactDetailService.GetDefaultContact();
