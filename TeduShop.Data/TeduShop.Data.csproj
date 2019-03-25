@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201903231331559_addFeedback.Designer.cs">
       <DependentUpon>201903231331559_addFeedback.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903251521235_addOrder.cs" />
+    <Compile Include="Migrations\201903251521235_addOrder.Designer.cs">
+      <DependentUpon>201903251521235_addOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903231331559_addFeedback.resx">
       <DependentUpon>201903231331559_addFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903251521235_addOrder.resx">
+      <DependentUpon>201903251521235_addOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

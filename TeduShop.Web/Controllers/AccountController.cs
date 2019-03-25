@@ -55,6 +55,7 @@ namespace TeduShop.Web.Controllers
         {
 
         }
+        // GET: Account
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -91,6 +92,7 @@ namespace TeduShop.Web.Controllers
             }
             return View(model);
         }
+
 
         [HttpGet]
         public ActionResult Register()
@@ -147,6 +149,7 @@ namespace TeduShop.Web.Controllers
 
             return View();
         }
+
         [HttpPost]
 
         [ValidateAntiForgeryToken]
