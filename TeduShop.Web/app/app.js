@@ -3,13 +3,15 @@
 (function () {
     angular.module('tedushop',
         ['tedushop.products',
+         'tedushop.application_groups',
          'tedushop.product_categories',
+         'tedushop.application_roles',
+         'tedushop.application_users',
          'tedushop.common'])
         .config(config)
         .config(configAuthentication);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
-
 
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -30,6 +32,7 @@
             });
         $urlRouterProvider.otherwise('/login');
     }
+
     function configAuthentication($httpProvider) {
         $httpProvider.interceptors.push(function ($q, $location) {
             return {

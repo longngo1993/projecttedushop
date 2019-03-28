@@ -69,6 +69,7 @@ namespace TeduShop.Web.Infrastructure.Extensions
             post.MetaDescription = postVm.MetaDescription;
             post.Status = postVm.Status;
         }
+
         public static void UpdateProduct(this Product product, ProductViewModel productVm)
         {
             product.ID = productVm.ID;
@@ -85,7 +86,7 @@ namespace TeduShop.Web.Infrastructure.Extensions
             product.HomeFlag = productVm.HomeFlag;
             product.HotFlag = productVm.HotFlag;
             product.ViewCount = productVm.ViewCount;
-            product.Tags = productVm.Tags;
+
             product.CreatedDate = productVm.CreatedDate;
             product.CreatedBy = productVm.CreatedBy;
             product.UpdatedDate = productVm.UpdatedDate;
@@ -93,8 +94,10 @@ namespace TeduShop.Web.Infrastructure.Extensions
             product.MetaKeyword = productVm.MetaKeyword;
             product.MetaDescription = productVm.MetaDescription;
             product.Status = productVm.Status;
+            product.Tags = productVm.Tags;
             product.Quantity = productVm.Quantity;
         }
+
         public static void UpdateFeedback(this Feedback feedback, FeedbackViewModel feedbackVm)
         {
             feedback.Name = feedbackVm.Name;
@@ -103,6 +106,7 @@ namespace TeduShop.Web.Infrastructure.Extensions
             feedback.Status = feedbackVm.Status;
             feedback.CreatedDate = DateTime.Now;
         }
+
         public static void UpdateOrder(this Order order, OrderViewModel orderVm)
         {
             order.CustomerName = orderVm.CustomerName;
@@ -115,6 +119,32 @@ namespace TeduShop.Web.Infrastructure.Extensions
             order.CreatedBy = orderVm.CreatedBy;
             order.Status = orderVm.Status;
             order.CustomerId = orderVm.CustomerId;
+        }
+
+        public static void UpdateApplicationGroup(this ApplicationGroup appGroup, ApplicationGroupViewModel appGroupViewModel)
+        {
+            appGroup.ID = appGroupViewModel.ID;
+            appGroup.Name = appGroupViewModel.Name;
+        }
+
+        public static void UpdateApplicationRole(this ApplicationRole appRole, ApplicationRoleViewModel appRoleViewModel, string action = "add")
+        {
+            if (action == "update")
+                appRole.Id = appRoleViewModel.Id;
+            else
+                appRole.Id = Guid.NewGuid().ToString();
+            appRole.Name = appRoleViewModel.Name;
+            appRole.Description = appRoleViewModel.Description;
+        }
+        public static void UpdateUser(this ApplicationUser appUser, ApplicationUserViewModel appUserViewModel, string action = "add")
+        {
+
+            appUser.Id = appUserViewModel.Id;
+            appUser.FullName = appUserViewModel.FullName;
+            appUser.BirthDay = appUserViewModel.BirthDay;
+            appUser.Email = appUserViewModel.Email;
+            appUser.UserName = appUserViewModel.UserName;
+            appUser.PhoneNumber = appUserViewModel.PhoneNumber;
         }
     }
 }
