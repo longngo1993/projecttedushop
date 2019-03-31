@@ -20,14 +20,22 @@ namespace TeduShop.Service
 
         IEnumerable<Product> GetAll(string keyword);
 
-        Product GetById(int id);
         IEnumerable<Product> GetLastest(int top);
 
         IEnumerable<Product> GetHotProduct(int top);
+
         IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
+
         IEnumerable<Product> Search(string keyword, int page, int pageSize, string sort, out int totalRow);
-        IEnumerable<string> GetListProductByName(string name);
+
         IEnumerable<Product> GetReatedProducts(int id, int top);
+
+        IEnumerable<string> GetListProductByName(string name);
+
+        Product GetById(int id);
+
+        void Save();
+
         IEnumerable<Tag> GetListTagByProductId(int id);
 
         Tag GetTag(string tagId);
@@ -35,7 +43,8 @@ namespace TeduShop.Service
         void IncreaseView(int id);
 
         IEnumerable<Product> GetListProductByTag(string tagId, int page, int pagesize, out int totalRow);
-        void Save();
+
+        bool SellProduct(int productId, int quantity);
     }
 
     public class ProductService : IProductService
@@ -43,6 +52,7 @@ namespace TeduShop.Service
         private IProductRepository _productRepository;
         private ITagRepository _tagRepository;
         private IProductTagRepository _productTagRepository;
+
         private IUnitOfWork _unitOfWork;
 
         public ProductService(IProductRepository productRepository, IProductTagRepository productTagRepository,
@@ -133,6 +143,7 @@ namespace TeduShop.Service
                     productTag.TagID = tagId;
                     _productTagRepository.Add(productTag);
                 }
+
             }
         }
 
@@ -146,6 +157,7 @@ namespace TeduShop.Service
             return _productRepository.GetMulti(x => x.Status && x.HotFlag == true).OrderByDescending(x => x.CreatedDate).Take(top);
 
         }
+
         public IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId, int page, int pageSize, string sort, out int totalRow)
         {
             var query = _productRepository.GetMulti(x => x.Status && x.CategoryID == categoryId);
@@ -170,6 +182,12 @@ namespace TeduShop.Service
 
             return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
+
+        public IEnumerable<string> GetListProductByName(string name)
+        {
+            return _productRepository.GetMulti(x => x.Status && x.Name.Contains(name)).Select(y => y.Name);
+        }
+
         public IEnumerable<Product> Search(string keyword, int page, int pageSize, string sort, out int totalRow)
         {
             var query = _productRepository.GetMulti(x => x.Status && x.Name.Contains(keyword));
@@ -194,16 +212,13 @@ namespace TeduShop.Service
 
             return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
-        public IEnumerable<string> GetListProductByName(string name)
-        {
-            return _productRepository.GetMulti(x => x.Status && x.Name.Contains(name)).Select(y => y.Name);
-        }
 
         public IEnumerable<Product> GetReatedProducts(int id, int top)
         {
             var product = _productRepository.GetSingleById(id);
             return _productRepository.GetMulti(x => x.Status && x.ID != id && x.CategoryID == product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
         }
+
         public IEnumerable<Tag> GetListTagByProductId(int id)
         {
             return _productTagRepository.GetMulti(x => x.ProductID == id, new string[] { "Tag" }).Select(y => y.Tag);
@@ -227,6 +242,16 @@ namespace TeduShop.Service
         public Tag GetTag(string tagId)
         {
             return _tagRepository.GetSingleByCondition(x => x.ID == tagId);
+        }
+
+        //Selling product
+        public bool SellProduct(int productId, int quantity)
+        {
+            var product = _productRepository.GetSingleById(productId);
+            if (product.Quantity < quantity)
+                return false;
+            product.Quantity -= quantity;
+            return true;
         }
     }
 }

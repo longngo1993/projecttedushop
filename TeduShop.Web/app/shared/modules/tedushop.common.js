@@ -1,3 +1,3 @@
 ﻿(function () {
-    angular.module('tedushop.common', ['ui.router', 'ngBootbox', 'ngCkeditor', 'LocalStorageModule', 'checklist-model'])
+    angular.module('tedushop.common', ['ui.router', 'ngBootbox', 'ngCkeditor', 'LocalStorageModule', 'checklist-model', 'chart.js'])
 })();

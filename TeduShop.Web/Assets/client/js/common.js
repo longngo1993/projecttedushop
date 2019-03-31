@@ -44,6 +44,8 @@
                     if (response.status) {
                         alert('Thêm sản phẩm thành công.');
                     }
+                    else
+                        alert('Sản phẩm đang hết hàng.');
                 }
             });
         });

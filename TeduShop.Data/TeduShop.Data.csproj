@@ -113,6 +113,14 @@
     <Compile Include="Migrations\201903281446328_addgroupUser.Designer.cs">
       <DependentUpon>201903281446328_addgroupUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903310741135_editColumn.cs" />
+    <Compile Include="Migrations\201903310741135_editColumn.Designer.cs">
+      <DependentUpon>201903310741135_editColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903310810275_RevenuesStatisticSP.cs" />
+    <Compile Include="Migrations\201903310810275_RevenuesStatisticSP.Designer.cs">
+      <DependentUpon>201903310810275_RevenuesStatisticSP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApplicationGroupRepository.cs" />
@@ -191,6 +199,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903281446328_addgroupUser.resx">
       <DependentUpon>201903281446328_addgroupUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903310741135_editColumn.resx">
+      <DependentUpon>201903310741135_editColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903310810275_RevenuesStatisticSP.resx">
+      <DependentUpon>201903310810275_RevenuesStatisticSP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
