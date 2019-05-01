@@ -24,6 +24,7 @@
             CreateSlide(context);
             CreatePage(context);
             CreateContactDetail(context);
+            CreateConfigTitle(context);
             //  This method will be called after migrating to the latest version.
 
             //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
@@ -53,7 +54,36 @@
             //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
 
         }
+        private void CreateConfigTitle(TeduShopDbContext context)
+        {
+            if (!context.SystemConfigs.Any(x => x.Code == "HomeTitle"))
+            {
+                context.SystemConfigs.Add(new SystemConfig()
+                {
+                    Code = "HomeTitle",
+                    ValueString = "Trang chủ TeduShop",
 
+                });
+            }
+            if (!context.SystemConfigs.Any(x => x.Code == "HomeMetaKeyword"))
+            {
+                context.SystemConfigs.Add(new SystemConfig()
+                {
+                    Code = "HomeMetaKeyword",
+                    ValueString = "Trang chủ TeduShop",
+
+                });
+            }
+            if (!context.SystemConfigs.Any(x => x.Code == "HomeMetaDescription"))
+            {
+                context.SystemConfigs.Add(new SystemConfig()
+                {
+                    Code = "HomeMetaDescription",
+                    ValueString = "Trang chủ TeduShop",
+
+                });
+            }
+        }
         private void CreateProductCategorySample(TeduShop.Data.TeduShopDbContext context)
         {
             if (context.ProductCategories.Count() == 0)
